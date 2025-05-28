@@ -3,12 +3,12 @@
   become: true
   tasks:
     - name: Install dependencies via galaxy roles
-      import_role:
+      ansible.builtin.import_role:
         name: geerlingguy.pip
       tags: setup
 
     - name: Install docker module via pip
-      pip:
+      ansible.builtin.pip:
         name: docker
         state: present
       tags: setup
@@ -19,7 +19,7 @@
 
   tasks:
     - name: Ensure redmine directory exists
-      file:
+      ansible.builtin.file:
         path: "/home/redmine"
         state: directory
         mode: '0755'
@@ -33,13 +33,13 @@
       tags: deploy
 
     - name: Pull redmine Docker image
-      docker_image:
+      community.docker.docker_image:
         name: redmine
         source: pull
       tags: deploy
 
     - name: Run Redmine container
-      docker_container:
+      community.docker.docker_container:
         name: redmine
         image: redmine
         restart_policy: always
