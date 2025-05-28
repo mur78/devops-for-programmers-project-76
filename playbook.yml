@@ -1,31 +1,31 @@
-- name: prepare servers for deploy
+- name: Prepare servers for deploy
   hosts: all
   become: true
   tasks:
-    - name: install dependencies via galaxy roles
+    - name: Install dependencies via galaxy roles
       import_role:
         name: geerlingguy.pip
       tags: setup
 
-    - name: install docker module via pip
+    - name: Install docker module via pip
       pip:
         name: docker
         state: present
       tags: setup
 
-- name: deploy redmine application
+- name: Deploy redmine application
   hosts: all
   become: true
 
   tasks:
-    - name: ensure redmine directory exists
+    - name: Ensure redmine directory exists
       file:
         path: "/home/redmine"
         state: directory
         mode: '0755'
       tags: deploy
 
-    - name: create .env file from template
+    - name: Create .env file from template
       ansible.builtin.template:
         src: templates/redmine.env.j2
         dest: .env
@@ -49,7 +49,7 @@
         state: started
       tags: deploy
 
-- name: install and start datadog
+- name: Install and start datadog
   hosts: webservers
   become: true
   roles:
