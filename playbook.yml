@@ -28,7 +28,7 @@
     - name: Create .env file from template
       ansible.builtin.template:
         src: redmine.env.j2
-        dest: .env
+        dest: /home/redmine/.env
         mode: '644'
       tags: deploy
 
