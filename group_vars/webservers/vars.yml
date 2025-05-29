@@ -1,10 +1,10 @@
-redmine_ext_port: "3000"
+redmine_ext_port: 3000
 
 redmine_db_name: "db1"
 redmine_db_user: "user1"
 redmine_db_host: "rc1a-6sd3ce8fj1d9kntu.mdb.yandexcloud.net,rc1b-vac8s1bfe8q3i346.mdb.yandexcloud.net" 
 redmine_db_password: "{{ vault_redmine_db_pass}}"
-redmine_db_port: "6432"
+redmine_db_port: 6432
 
 datadog_api_key: "{{ datadog_api_key }}"
 datadog_site: "datadoghq.eu"
