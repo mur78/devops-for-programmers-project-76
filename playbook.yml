@@ -44,7 +44,7 @@
         image: redmine
         restart_policy: always
         ports:
-          - "3000:3000"
+          - "{{ REDMINE_PORT }}:3000"
         env_file: /home/redmine/.env
         state: started
       tags: deploy
