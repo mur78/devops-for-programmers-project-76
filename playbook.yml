@@ -22,12 +22,12 @@
       ansible.builtin.file:
         path: "/home/redmine"
         state: directory
-        mode: '0755'
+        mode: '755'
       tags: deploy
 
     - name: Create .env file from template
       ansible.builtin.template:
-        src: templates/redmine.env.j2
+        src: redmine.env.j2
         dest: .env
         mode: '644'
       tags: deploy
@@ -44,7 +44,7 @@
         image: redmine
         restart_policy: always
         ports:
-          - "3000:3000"
+          - "{{ redmine_ext_port }}:3000"
         env_file: .env
         state: started
       tags: deploy

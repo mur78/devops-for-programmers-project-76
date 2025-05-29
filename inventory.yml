@@ -1,8 +1,10 @@
-all:
+webservers:
   hosts:
     compute-vm-1:
       ansible_host: 158.160.75.89
-      ansible_user: admin1
+      ansible_user: root
+      ansible_ssh_private_key_file: ~/.ssh/ya1cl
     compute-vm-2:
       ansible_host: 158.160.67.207
-      ansible_user: admin2
+      ansible_user: root
+      ansible_ssh_private_key_file: ~/.ssh/ya2cl
